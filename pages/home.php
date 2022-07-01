@@ -156,7 +156,7 @@
                     <a href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact us</a>
                 </div>
             </div> <!-- container -->
-            <br>
+
         </div>
 
         <div id="slider-2" class="container mx-auto rounded-lg">
