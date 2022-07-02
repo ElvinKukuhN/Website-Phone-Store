@@ -107,7 +107,7 @@
                         <!-- Primary Navbar items -->
                         <div class="hidden md:flex items-center space-x-1">
                             <a href="" class="py-4 px-2 text-fuchsia-500 border-b-4 border-fuchsia-500 font-semibold ">Home</a>
-                            <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">Services</a>
+                            <a href="datauser.php" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">User-data</a>
                             <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">About</a>
                             <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">Contact Us</a>
                         </div>
@@ -131,7 +131,7 @@
             <div class="hidden mobile-menu">
                 <ul class="">
                     <li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-fuchsia-500 font-semibold">Home</a></li>
-                    <li><a href="#services" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">Services</a></li>
+                    <li><a href="datauser.php" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">User-data</a></li>
                     <li><a href="#about" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">About</a></li>
                     <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">Contact Us</a></li>
                 </ul>
@@ -377,6 +377,7 @@
     </div>
     <!-- Section End -->
     <br><br><br><br><br><br>
+
     <!-- Footer Start -->
 
     <footer class="p-4 bg-purple-800 sm:p-6 dark:bg-gray-800 mt-96">
