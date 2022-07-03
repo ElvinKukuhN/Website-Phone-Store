@@ -1,3 +1,10 @@
+<?php
+require 'koneksi.php';
+
+$list = mysqli_query($conn, "SELECT * FROM data_diri")
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KUstore - Data User input</title>
+    <title>KUstore - List Data User</title>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
@@ -88,7 +95,7 @@
     </script>
 </head>
 
-<body class="bg-gradient-to-r from-purple-900 via-indigo-900 to-black">
+<body>
 
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
@@ -149,144 +156,90 @@
     </header>
     <!-- Header End -->
 
-    <!-- Section Start -->
-    <Section class="mx-3 mt-3 shadow-2xl">
-        <div>
-            <div class="md:grid md:grid-cols-3 md:gap-6">
-                <div class="md:col-span-1">
-                    <div class="px-4 sm:px-0">
-                        <h3 class="text-lg font-medium leading-6 text-white">Profile</h3>
-                        <p class="mt-1 text-sm text-white">This information will be displayed publicly so be careful what you share.</p>
-                    </div>
-                </div>
-                <div class="mt-5 md:mt-0 md:col-span-2 shadow-2xl shadow-white">
-                    <form action="terima-data.php" method="POST" enctype="multipart/form-data">
-                        <div class="shadow overflow-hidden sm:rounded-md">
-                            <div class="px-4 py-5 bg-pink-400  sm:p-6">
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="first-name" class="block text-sm font-medium text-white">First name</label>
-                                        <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
-                                    </div>
+    <!-- Table End -->
+    <div class="flex flex-col mt-8">
+        <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+            <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+                <table class="min-w-full shadow-lg">
+                    <thead>
+                        <tr>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Name</th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Email</th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                country</th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Edit</th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Delete</th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Details
+                            </th>
+                        </tr>
+                    </thead>
 
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="last-name" class="block text-sm font-medium text-white">Last name</label>
-                                        <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-4">
-                                        <label for="email-address" class="block text-sm font-medium text-white">Email address</label>
-                                        <input type="text" name="email" id="email-address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="country" class="block text-sm font-medium text-white">Country</label>
-                                        <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-pink-300 sm:text-sm">
-                                            <option>United States</option>
-                                            <option>Canada</option>
-                                            <option>Mexico</option>
-                                            <option>Indonesia</option>
-                                            <option>Malaysia</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-span-6">
-                                        <label for="street-address" class="block text-sm font-medium text-white">Street address</label>
-                                        <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                                        <label for="city" class="block text-sm font-medium text-white">City</label>
-                                        <input type="text" name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                        <label for="region" class="block text-sm font-medium text-white">State / Province</label>
-                                        <input type="text" name="region" id="region" autocomplete="address-level1" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                        <label for="postal-code" class="block text-sm font-medium text-white">ZIP / Postal code</label>
-                                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
-                                    </div>
-
-                                    <div class="col-span-6">
-                                        <label for="about" class="block text-sm font-medium text-white"> About You </label>
-                                        <div class="mt-1">
-                                            <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 px-2 py-1 block w-full sm:text-sm border border-gray-300 bg-pink-300 rounded-md" placeholder="you@example.com"></textarea>
+                    <tbody class="bg-white">
+                        <?php foreach ($list as $row) : ?>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 w-10 h-10">
+                                            <img class="w-10 h-10 rounded-full" src="upload/<?= $row["img"]; ?>" alt="admin dashboard ui">
                                         </div>
-                                        <p class="mt-2 text-sm text-white">Brief description for your profile. URLs are hyperlinked.</p>
-                                    </div>
 
-                                    <div class="col-span-6">
-                                        <label class="block text-sm font-medium text-gray-700"> Photo </label>
-                                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                            <div class="space-y-1 text-center">
-                                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                                <div class="flex text-sm text-white">
-                                                    <label for="file-upload" class="relative cursor-pointer px-2 border-2 border-pink-600 rounded-md font-medium text-white-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                                        <span>Upload a file</span>
-                                                        <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                                                    </label>
-                                                    <p class="pl-1">or drag and drop</p>
-                                                </div>
-                                                <p class="text-xs text-white">PNG, JPG, GIF up to 10MB</p>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium leading-5 text-gray-900">
+                                                <?= $row["first_name"]; ?>
                                             </div>
                                         </div>
                                     </div>
+                                </td>
 
-                                    <fieldset>
-                                        <legend class="sr-only">By Email</legend>
-                                        <div class="text-base font-medium text-white   " aria-hidden="true">By Email</div>
-                                        <div class="mt-4 space-y-4">
-                                            <div class="flex items-start">
-                                                <div class="flex items-center h-5">
-                                                    <input id="comments" name="comments" type="checkbox" value="Comments" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                                </div>
-                                                <div class="ml-3 text-sm">
-                                                    <label for="comments" class="font-medium text-slate-800">Comments</label>
-                                                    <p class="text-slate-800">Get notified when someones posts a comment on a posting.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <fieldset>
-                                        <legend class="contents text-base font-medium text-white">Push Notifications</legend>
-                                        <p class="text-sm text-white">These are delivered via SMS to your mobile phone.</p>
-                                        <div class="mt-4 space-y-4">
-                                            <div class="flex items-center">
-                                                <input id="push-everything" name="push-notifications" type="radio" value="Everything" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
-                                                <label for="push-everything" class="ml-3 block text-sm font-medium text-slate-800"> Everything </label>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <input id="push-email" name="push-notifications" type="radio" value="Same As Email" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
-                                                <label for="push-email" class="ml-3 block text-sm font-medium text-slate-800"> Same as email </label>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <input id="push-nothing" name="push-notifications" type="radio" value="No Push Notification" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
-                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-slate-800"> No push notifications </label>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <div class="px-4 py-3 bg-pink-400 text-right sm:px-6">
-                                    <button type="submit" class="inline-flex justify-center py-2 px-4 border-2 border-pink-700 shadow-xl text-sm font-medium rounded-md text-white bg-pink-400  hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">Save</button>
-                                </div>
-                            </div>
-                    </form>
-                </div>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                    <div class="text-sm leading-5 text-gray-500"><?= $row["email"]; ?></div>
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                    <div class="text-sm leading-5 text-gray-500"><?= $row["country"]; ?></div>
+                                </td>
+
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                    <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                </td>
+
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                    <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </td>
+
+                                <td class="px-6 py-4 text-sm leading-5  text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                    <button>
+                                        <img src="../images/search.png" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"></img>
+                                    </button>
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- Table End -->
 
-    <!-- Section End -->
 
     <!-- Footer Start -->
 
-    <footer class="p-4 bg-purple-800 sm:p-6 dark:bg-gray-800 mt-8 ">
-        <div class="md:flex md:justify-between  ">
+    <footer class="p-4 bg-purple-800 sm:p-6 dark:bg-gray-800 mt-32  ">
+        <div class="md:flex md:justify-between ">
             <div class="mb-6 md:mb-0">
                 <a href="https://flowbite.com/" class="flex items-center">
                     <img src="../images/phone-call-svgrepo-com (1).svg" class="mr-3 h-10" alt="FlowBite Logo">
