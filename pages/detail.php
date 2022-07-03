@@ -106,7 +106,7 @@ $row = mysqli_fetch_array($list);
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
     <!-- Header Start -->
     <header>
-        <nav class="bg-purple-800 shadow-lg">
+        <nav class="bg-purple-800 shadow-md shadow-black">
             <div class="max-w-screen mx-auto px-4">
                 <div class="flex justify-between">
                     <div class="flex space-x-7">
@@ -163,8 +163,8 @@ $row = mysqli_fetch_array($list);
 
     <!-- Details Start -->
     <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="flex justify-center">
-        <div class="bg-transparent shadow-2xl overflow-hidden w-full max-w-screen-lg border-2 border-fuchsia-400 sm:rounded-lg mx-5 mt-5">
+    <div class="flex justify-center ">
+        <div class="bg-transparent shadow-2xl shadow-fuchsia-500 overflow-hidden w-full max-w-screen-lg border-2  border-fuchsia-400 sm:rounded-lg mx-5 mt-5">
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg leading-6 font-bold text-white">Applicant Information</h3>
                 <p class="mt-1 max-w-2xl text-sm text-gray-50">Personal details and application.</p>
@@ -205,7 +205,7 @@ $row = mysqli_fetch_array($list);
                     </div>
                     <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-md font-medium text-white">Image</dt>
-                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><img src="upload/<?= $row["img"]; ?>" class="max-w-xs rounded-full"></dd>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><img src="upload/<?= $row["img"]; ?>" class="max-w-xs rounded-lg shadow-sm"></dd>
                     </div>
                 </dl>
             </div>
