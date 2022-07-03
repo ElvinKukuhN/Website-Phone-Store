@@ -130,11 +130,12 @@
     <!-- Section Start -->
     <br><br>
     <div class="  my-12 max-w-full flex justify-center ">
-        <div class="max-w-lg font-bold bg-fuchsia-500  text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
+        <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
             <span class="text-white">Iphone List</span>
         </div>
     </div>
-    <div class="container mx-auto my-52 space-y-3 lg:space-y-0 lg:gap-6 lg:grid lg:grid-cols-5">
+
+    <div class="container mx-auto my-52 space-y-3 lg:space-y-0 lg:gap-6 lg:grid lg:grid-cols-5 shadow-lg p-3 -mt-10">
         <div class="wrapper bg-transparent antialiased text-gray-900">
             <div>
 
@@ -169,7 +170,7 @@
         <div class="wrapper bg-transparent antialiased text-gray-900">
             <div>
 
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+                <img src="https://source.unsplash.com/random/350x450" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
 
                 <div class="relative px-4 -mt-16  ">
                     <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -571,8 +572,7 @@
         </div>
 
     </div>
-    <!-- <div class="container mx-auto">
-    </div> -->
+
     <!-- Section End -->
     <br><br><br><br><br><br>
 
