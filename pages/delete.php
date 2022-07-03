@@ -1,8 +1,11 @@
 <?php
 require 'koneksi.php';
 
+$id = $_GET['id_data_diri'];
 
-if (tambah($_POST) == 1) {
+$data = mysqli_query($conn, "delete from data_diri WHERE id_data_diri='$id' ");
+
+if ($data == 1) {
 ?>
     <script>
         let url = "list-user.php";
