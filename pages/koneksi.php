@@ -118,3 +118,64 @@ function update($data)
 
     return mysqli_affected_rows($conn);
 }
+
+
+function register($data)
+{
+
+    global $conn;
+
+    $nama = $data['nama'];
+    $email = $data['email'];
+    $password = mysqli_real_escape_string($conn, $data['password']);
+    $password2 = mysqli_real_escape_string($conn, $data['password2']);
+
+    // Cek email sudah ada atau belum
+    $result = mysqli_query($conn, "SELECT email FROM user WHERE email = '$email'");
+    if (mysqli_fetch_assoc($result)) {
+        echo
+        "<script>
+    alert ('email sudah terdaftar');
+    </script>";
+        return false;
+    }
+
+    // Cek Konfirmasi password 
+    if ($password !== $password2) {
+        echo
+        "<script>
+        alert ('Konfirmasi Password Tidak Sesuai');
+        </script>";
+
+        return false;
+    }
+
+    // Enkripsi Password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    // tambah user baru
+    mysqli_query($conn, "INSERT INTO user (nama,email,password) VALUES('$nama','$email','$password')");
+
+    return mysqli_affected_rows($conn);
+}
+
+
+function login($data)
+{
+    global $conn;
+    $email = $data['email'];
+    $password = $data['password'];
+
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+
+    // Cek Email
+    if (mysqli_num_rows($result) === 1) {
+
+        // Cek Password
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row["password"])) {
+            header("location : home.php");
+            exit;
+        }
+    }
+}

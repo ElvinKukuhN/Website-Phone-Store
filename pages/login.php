@@ -1,3 +1,32 @@
+<?php
+require 'koneksi.php';
+if (isset($_POST["login"])) {
+
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+
+    // Cek Email
+    if (mysqli_num_rows($result) === 1) {
+
+        // Cek Password
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row["password"])) {
+?>
+            <script>
+                window.location.href = "home.php";
+            </script>
+<?php
+            exit;
+        }
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,63 +123,9 @@
 </head>
 
 <body class="bg-gradient-to-r from-purple-900 via-indigo-900 to-black">
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-    <!-- Header Start -->
-    <header>
-        <nav class="bg-purple-800 shadow-lg">
-            <div class="max-w-screen mx-auto px-4">
-                <div class="flex justify-between">
-                    <div class="flex space-x-7">
-                        <div>
-                            <!-- Website Logo -->
-                            <a href="#" class="flex items-center py-4 px-2">
-                                <img src="../images/phone-call-svgrepo-com (1).svg" alt="Logo" class="h-9 w-9 mr-3">
-                                <span class="font-semibold text-white text-4xl">KUstore</span>
-                            </a>
-                        </div>
-                        <!-- Primary Navbar items -->
-                        <div class="hidden md:flex items-center space-x-1">
-                            <a href="home.php" class="py-4 px-2 text-fuchsia-500 border-b-4 border-fuchsia-500 font-semibold ">Home</a>
-                            <a href="datauser.php" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">User-data</a>
-                            <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">About</a>
-                            <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">Contact Us</a>
-                        </div>
-                    </div>
-                    <!-- Secondary Navbar items -->
-                    <div class="hidden md:flex items-center space-x-3 ">
-                        <a href="login.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log In</a>
-                        <a href="register.php" class="py-2 px-2 font-medium text-white bg-fuchsia-500 rounded hover:bg-fuchsia-400 transition duration-300">Sign Up</a>
-                    </div>
-                    <!-- Mobile menu button -->
-                    <div class="md:hidden flex items-center">
-                        <button class="outline-none mobile-menu-button">
-                            <svg class=" w-6 h-6 text-fuchsia-500 hover:text-fuchsia-400 " x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- mobile menu -->
-            <div class="hidden mobile-menu">
-                <ul class="">
-                    <li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-fuchsia-500 font-semibold">Home</a></li>
-                    <li><a href="#services" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">User-data</a></li>
-                    <li><a href="#about" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">About</a></li>
-                    <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">Contact Us</a></li>
-                </ul>
-            </div>
-            <script>
-                const btn = document.querySelector("button.mobile-menu-button");
-                const menu = document.querySelector(".mobile-menu");
-
-                btn.addEventListener("click", () => {
-                    menu.classList.toggle("hidden");
-                });
-            </script>
-        </nav>
-    </header>
-    <!-- Header End -->
+    <?php
+    include 'header.php';
+    ?>
 
     <!-- form Login Start -->
     <section class="h-screen">
@@ -160,7 +135,7 @@
                     <img src="../images/pngwing.com.png" class="w-10/12" alt="Sample image" />
                 </div>
                 <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-                    <form>
+                    <form action="" method="POST">
                         <div class="flex flex-row items-center justify-center lg:justify-start">
                             <p class="text-lg text-white mb-0 mr-4">Sign in with</p>
                             <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" class="inline-block p-3 bg-fuchsia-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1">
@@ -194,12 +169,12 @@
 
                         <!-- Email input -->
                         <div class="mb-6">
-                            <input type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-fuchsia-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Email address" />
+                            <input type="email" name="email" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-fuchsia-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Email address" />
                         </div>
 
                         <!-- Password input -->
                         <div class="mb-6">
-                            <input type="password" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-fuchsia-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Password" />
+                            <input type="password" name="password" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-fuchsia-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Password" />
                         </div>
 
                         <div class="flex justify-between items-center mb-6">
@@ -211,7 +186,7 @@
                         </div>
 
                         <div class="text-center lg:text-left">
-                            <button type="button" class="inline-block px-7 py-3 bg-fuchsia-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-800 active:shadow-lg transition duration-150 ease-in-out">
+                            <button type="submit" name="login" class="inline-block px-7 py-3 bg-fuchsia-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-800 active:shadow-lg transition duration-150 ease-in-out">
                                 Login
                             </button>
                             <p class="text-sm text-white font-semibold mt-2 pt-1 mb-0">
