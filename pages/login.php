@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+
 require 'koneksi.php';
 if (isset($_POST["login"])) {
 
@@ -14,6 +17,9 @@ if (isset($_POST["login"])) {
         // Cek Password
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row["password"])) {
+
+            // cek Session
+            $_SESSION["login"] = true;
 ?>
             <script>
                 window.location.href = "home.php";
