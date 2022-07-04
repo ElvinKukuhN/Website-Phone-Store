@@ -97,9 +97,11 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
 
 <body class="bg-gradient-to-r from-purple-900 via-indigo-900 to-black">
 
+
     <?php
     include 'header.php';
     ?>
+
 
     <!-- Table End -->
     <div class="flex flex-col mt-10 bg-transparent mx-3">
