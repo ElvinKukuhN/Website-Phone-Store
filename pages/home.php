@@ -1,3 +1,11 @@
+<?php
+
+require 'koneksi.php';
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,81 +20,7 @@
 
     <link href="../dist/output.css" rel="stylesheet">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <script>
-        var cont = 0;
 
-        function loopSlider() {
-            var xx = setInterval(function() {
-                switch (cont) {
-                    case 0: {
-                        $("#slider-1").fadeOut(400);
-                        $("#slider-2").delay(400).fadeIn(400);
-                        $("#sButton1").removeClass("bg-purple-800");
-                        $("#sButton2").addClass("bg-purple-800");
-                        cont = 1;
-
-                        break;
-                    }
-                    case 1: {
-
-                        $("#slider-2").fadeOut(400);
-                        $("#slider-1").delay(400).fadeIn(400);
-                        $("#sButton2").removeClass("bg-purple-800");
-                        $("#sButton1").addClass("bg-purple-800");
-
-                        cont = 0;
-
-                        break;
-                    }
-
-
-                }
-            }, 8000);
-
-        }
-
-        function reinitLoop(time) {
-            clearInterval(xx);
-            setTimeout(loopSlider(), time);
-        }
-
-
-
-        function sliderButton1() {
-
-            $("#slider-2").fadeOut(400);
-            $("#slider-1").delay(400).fadeIn(400);
-            $("#sButton2").removeClass("bg-purple-800");
-            $("#sButton1").addClass("bg-purple-800");
-            reinitLoop(4000);
-            cont = 0
-
-        }
-
-        function sliderButton2() {
-            $("#slider-1").fadeOut(400);
-            $("#slider-2").delay(400).fadeIn(400);
-            $("#sButton1").removeClass("bg-purple-800");
-            $("#sButton2").addClass("bg-purple-800");
-            reinitLoop(4000);
-            cont = 1
-
-        }
-
-        $(window).ready(function() {
-            $("#slider-2").hide();
-            $("#sButton1").addClass("bg-purple-800");
-
-
-            loopSlider();
-
-
-
-
-
-
-        });
-    </script>
 </head>
 
 <body class="bg-gradient-to-r from-purple-900 via-indigo-900 to-black">
@@ -129,446 +63,134 @@
 
     <!-- Section Start -->
     <br><br>
-    <div class="  my-12 max-w-full flex justify-center ">
-        <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
-            <span class="text-white">Iphone List</span>
+
+
+    <!-- Iphone List -->
+    <div>
+
+        <div class="  my-12 max-w-full flex justify-center ">
+            <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
+                <span class="text-white">Iphone List</span>
+            </div>
         </div>
+        <div class="">
+            <div class=" flex flex-wrap justify-center mx-auto my-52 lg:space-y-0 sm:my-3 lg:gap-6 lg:grid lg:grid-cols-5 shadow-lg p-3 -mt-10">
+                <?php $list = query("SELECT * FROM product WHERE id_jenis = 1 ") ?>
+                <<?php foreach ($list as $row) : ?> <div class="wrapper bg-transparent antialiased text-gray-900">
+                    <div class=" w-96 h-5/6 flex flex-wrap justify-center ">
+                        <img src="../images/<?= $row['gambar_product']; ?>" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                        <div class="relative px-4 -mt-16  ">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-baseline">
+                                    <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                        New
+                                    </span>
+                                    <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                        <?= $row['tipe']; ?>
+                                    </div>
+                                </div>
+
+                                <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate"><?= $row['nama_product']; ?></h4>
+
+                                <div class="mt-1">
+                                    <?= $row['harga_product']; ?>
+                                </div>
+                                <div class="mt-1">
+                                    <?= $row['keterangan']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        <?php endforeach; ?>
+        </div>
+
     </div>
 
-    <div class="container mx-auto my-52 space-y-3 lg:space-y-0 lg:gap-6 lg:grid lg:grid-cols-5 shadow-lg p-3 -mt-10">
-        <div class="wrapper bg-transparent antialiased text-gray-900">
-            <div>
 
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+    <!-- Headphone List -->
+    <div>
 
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="  my-12 max-w-full flex justify-center ">
+            <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
+                <span class="text-white">Headphone List</span>
             </div>
         </div>
-        <div class="wrapper bg-transparent antialiased text-gray-900">
-            <div>
+        <div class="">
+            <div class=" flex flex-wrap justify-center mx-auto my-52 lg:space-y-0 sm:my-3 lg:gap-6 lg:grid lg:grid-cols-5 shadow-lg p-3 -mt-10">
+                <?php $list = query("SELECT * FROM product WHERE id_jenis = 2 ") ?>
+                <<?php foreach ($list as $row) : ?> <div class="wrapper bg-transparent antialiased text-gray-900">
+                    <div class=" w-96 h-5/6 flex flex-wrap justify-center ">
+                        <img src="../images/<?= $row['gambar_product']; ?>" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
 
-                <img src="https://source.unsplash.com/random/350x450" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+                        <div class="relative px-4 -mt-16  ">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-baseline">
+                                    <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                        New
+                                    </span>
+                                    <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                        <?= $row['tipe']; ?>
+                                    </div>
+                                </div>
 
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate"><?= $row['nama_product']; ?></h4>
+
+                                <div class="mt-1">
+                                    <?= $row['harga_product']; ?>
+                                </div>
+                                <div class="mt-1">
+                                    <?= $row['keterangan']; ?>
+                                </div>
                             </div>
                         </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
                     </div>
-                </div>
+            </div>
+        <?php endforeach; ?>
+        </div>
 
+    </div>
+
+    <!-- Samsung List -->
+    <div>
+
+        <div class="  my-12 max-w-full flex justify-center ">
+            <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
+                <span class="text-white">Samsung List</span>
             </div>
         </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
+        <div class="">
+            <div class=" flex flex-wrap justify-center mx-auto my-52 lg:space-y-0 sm:my-3 lg:gap-6 lg:grid lg:grid-cols-5  shadow-lg p-3 -mt-10">
+                <?php $list = query("SELECT * FROM product WHERE id_jenis = 3 ") ?>
+                <<?php foreach ($list as $row) : ?> <div class="wrapper bg-transparent antialiased text-gray-900">
+                    <div class=" w-96 h-5/6 flex flex-wrap justify-center pb-3 ">
+                        <img src="../images/<?= $row['gambar_product']; ?>" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
 
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+                        <div class="relative px-4 -mt-16  ">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-baseline">
+                                    <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                        New
+                                    </span>
+                                    <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                        <?= $row['tipe']; ?>
+                                    </div>
+                                </div>
 
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate"><?= $row['nama_product']; ?></h4>
+
+                                <div class="mt-1">
+                                    <?= $row['harga_product']; ?>
+                                </div>
+                                <div class="mt-1">
+                                    <?= $row['keterangan']; ?>
+                                </div>
                             </div>
                         </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
                     </div>
-                </div>
-
             </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="wrapper bg-gray-400 antialiased text-gray-900">
-            <div>
-
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-
-                <div class="relative px-4 -mt-16  ">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-baseline">
-                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                New
-                            </span>
-                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
-                            </div>
-                        </div>
-
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
-
-                        <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
-                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <?php endforeach; ?>
         </div>
 
     </div>
