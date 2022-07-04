@@ -138,7 +138,7 @@ if (!isset($_SESSION["login"])) {
 
                         <!-- Secondary Navbar items -->
                         <div class="hidden md:flex items-center space-x-3 ">
-                            <a href="login.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log In</a>
+                            <a href="logout.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log Out</a>
                         </div>
                     <?php
                     } else {
