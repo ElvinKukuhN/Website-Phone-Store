@@ -8,6 +8,7 @@
     <title>KuStore</title>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.8.9/tailwind.min.css">
 
     <link href="../dist/output.css" rel="stylesheet">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
@@ -92,289 +93,486 @@
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
     <!-- Header Start -->
-    <header>
-        <nav class="bg-purple-800 shadow-lg">
-            <div class="max-w-screen mx-auto px-4">
-                <div class="flex justify-between">
-                    <div class="flex space-x-7">
-                        <div>
-                            <!-- Website Logo -->
-                            <a href="#" class="flex items-center py-4 px-2">
-                                <img src="../images/phone-call-svgrepo-com (1).svg" alt="Logo" class="h-9 w-9 mr-3">
-                                <span class="font-semibold text-white text-4xl">KUstore</span>
-                            </a>
-                        </div>
-                        <!-- Primary Navbar items -->
-                        <div class="hidden md:flex items-center space-x-1">
-                            <a href="" class="py-4 px-2 text-fuchsia-500 border-b-4 border-fuchsia-500 font-semibold ">Home</a>
-                            <a href="datauser.php" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">User-data</a>
-                            <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">About</a>
-                            <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">Contact Us</a>
-                        </div>
-                    </div>
-                    <!-- Secondary Navbar items -->
-                    <div class="hidden md:flex items-center space-x-3 ">
-                        <a href="" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log In</a>
-                        <a href="" class="py-2 px-2 font-medium text-white bg-fuchsia-500 rounded hover:bg-fuchsia-400 transition duration-300">Sign Up</a>
-                    </div>
-                    <!-- Mobile menu button -->
-                    <div class="md:hidden flex items-center">
-                        <button class="outline-none mobile-menu-button">
-                            <svg class=" w-6 h-6 text-fuchsia-500 hover:text-fuchsia-400 " x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- mobile menu -->
-            <div class="hidden mobile-menu">
-                <ul class="">
-                    <li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-fuchsia-500 font-semibold">Home</a></li>
-                    <li><a href="datauser.php" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">User-data</a></li>
-                    <li><a href="#about" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">About</a></li>
-                    <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">Contact Us</a></li>
-                </ul>
-            </div>
-            <script>
-                const btn = document.querySelector("button.mobile-menu-button");
-                const menu = document.querySelector(".mobile-menu");
-
-                btn.addEventListener("click", () => {
-                    menu.classList.toggle("hidden");
-                });
-            </script>
-        </nav>
-        <div class="sliderAx max-h-screen max-w-full">
-            <div id="slider-1" class="container mx-auto w-screen">
-                <div class="bg-cover bg-center rounded-b-3xl  h-screen text-white py-24 px-10 object-fill" style="background-image: url(https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1422&q=80)">
-                    <div class="md:w-1/2">
-                        <p class="font-bold text-sm uppercase">Services</p>
-                        <p class="text-3xl font-bold">Hello world</p>
-                        <p class="text-2xl mb-10 leading-none">Carousel with TailwindCSS and jQuery</p>
-                        <a href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">Contact us</a>
-                    </div>
-                </div> <!-- container -->
-                <br>
-            </div>
-
-            <div id="slider-2" class="container mx-auto rounded-lg">
-                <div class="bg-cover bg-top  h-screen text-white py-24 px-10 object-fill" style="background-image: url(https://images.unsplash.com/photo-1544144433-d50aff500b91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
+    <?php
+    include 'header.php';
+    ?>
+    <div class="sliderAx max-h-screen max-w-full">
+        <div id="slider-1" class="container mx-auto w-screen">
+            <div class="bg-cover bg-center rounded-b-3xl  h-screen text-white py-24 px-10 object-fill" style="background-image: url(https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1422&q=80)">
+                <div class="md:w-1/2">
                     <p class="font-bold text-sm uppercase">Services</p>
                     <p class="text-3xl font-bold">Hello world</p>
                     <p class="text-2xl mb-10 leading-none">Carousel with TailwindCSS and jQuery</p>
-                    <a href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact us</a>
-                </div> <!-- container -->
-                <br>
-            </div>
-            <div class="flex justify-between w-12 mx-auto pb-2">
-                <button id="sButton1" onclick="sliderButton1()" class="bg-purple-400 rounded-full w-4 pb-2 "></button>
-                <button id="sButton2" onclick="sliderButton2() " class="bg-purple-400 rounded-full w-4 p-2"></button>
-            </div>
+                    <a href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">Contact us</a>
+                </div>
+            </div> <!-- container -->
+            <br>
         </div>
-        <!-- Carousel End -->
-    </header>
+
+        <div id="slider-2" class="container mx-auto rounded-lg">
+            <div class="bg-cover bg-top  h-screen text-white py-24 px-10 object-fill" style="background-image: url(https://images.unsplash.com/photo-1544144433-d50aff500b91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
+                <p class="font-bold text-sm uppercase">Services</p>
+                <p class="text-3xl font-bold">Hello world</p>
+                <p class="text-2xl mb-10 leading-none">Carousel with TailwindCSS and jQuery</p>
+                <a href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact us</a>
+            </div> <!-- container -->
+            <br>
+        </div>
+        <div class="flex justify-between w-12 mx-auto pb-2">
+            <button id="sButton1" onclick="sliderButton1()" class="bg-purple-400 rounded-full w-4 pb-2 "></button>
+            <button id="sButton2" onclick="sliderButton2() " class="bg-purple-400 rounded-full w-4 p-2"></button>
+        </div>
+    </div>
+
     <!-- Header End -->
 
-    <!-- Carousel Start -->
 
     <!-- Section Start -->
     <br><br>
     <div class="  my-12 max-w-full flex justify-center ">
-        <div class="max-w-lg font-bold bg-fuchsia-500  text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
+        <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
             <span class="text-white">Iphone List</span>
         </div>
     </div>
-    <div class="container mx-auto my-52 space-y-3 lg:space-y-0 lg:gap-6 lg:grid lg:grid-cols-5">
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center  py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
+
+    <div class="container mx-auto my-52 space-y-3 lg:space-y-0 lg:gap-6 lg:grid lg:grid-cols-5 shadow-lg p-3 -mt-10">
+        <div class="wrapper bg-transparent antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
+        <div class="wrapper bg-transparent antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x450" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5 h-40">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-        <div class="w-52 h-96 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
-            </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="w-52 h-96 bg-white  rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-center">
-                <img class="rounded-t-lg w-36 object-center" src="../images/headphone1.jpeg" alt="" />
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
+        </div>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                2 baths &bull; 3 rooms
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+
+                        <div class="mt-1">
+                            $1800
+                            <span class="text-gray-600 text-sm"> /wk</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
     </div>
+
     <!-- Section End -->
     <br><br><br><br><br><br>
 
