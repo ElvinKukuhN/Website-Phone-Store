@@ -1,7 +1,7 @@
 <?php
 require 'koneksi.php';
 
-$list = mysqli_query($conn, "SELECT * FROM data_diri")
+$list = mysqli_query($conn, "SELECT * FROM product INNER JOIN jenis ON product.id_jenis = jenis.id_jenis")
 
 ?>
 
@@ -12,10 +12,9 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KUstore - List Data User</title>
+    <title>KUstore - List Barang</title>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-   
 
     <link href="../dist/output.css" rel="stylesheet">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
@@ -133,27 +132,27 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 w-10 h-10">
-                                            <img class="w-10 h-10 rounded-full" src="upload/<?= $row["img"]; ?>" alt="admin dashboard ui">
+                                            <img class="w-10 h-10 rounded-full" src="../images/<?= $row["gambar_product"]; ?>" alt="admin dashboard ui">
                                         </div>
 
                                         <div class="ml-4">
                                             <div class="text-sm font-medium leading-5 text-white">
-                                                <?= $row["first_name"]; ?>
+                                                <?= $row["nama_product"]; ?>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-white"><?= $row["email"]; ?></div>
+                                    <div class="text-sm leading-5 text-white"><?= $row["jenis"]; ?></div>
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-white"><?= $row["country"]; ?></div>
+                                    <div class="text-sm leading-5 text-white"><?= $row["harga_product"]; ?></div>
                                 </td>
 
                                 <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='datauserUpdate.php?id_data_diri=" . $row['id_data_diri'] . "'"; ?>">
+                                    <button type="submit" onclick="<?php echo "location.href='datauserUpdate.php?id_product=" . $row['id_product'] . "'"; ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                         </svg>
@@ -161,7 +160,7 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
                                 </td>
 
                                 <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='delete.php?id_data_diri=" . $row['id_data_diri'] . "'"; ?>">
+                                    <button type="submit" onclick="<?php echo "location.href='delete.php?id_product=" . $row['id_product'] . "'"; ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                         </svg>
@@ -169,7 +168,7 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
                                 </td>
 
                                 <td class="px-6 py-4 text-sm leading-5  text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='detail.php?id_data_diri=" . $row['id_data_diri'] . "'"; ?>">
+                                    <button type="submit" onclick="<?php echo "location.href='detail.php?id_product=" . $row['id_product'] . "'"; ?>">
                                         <img src="../images/search.png" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"></img>
                                     </button>
                                 </td>
@@ -179,9 +178,9 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
                     </tbody>
                 </table>
                 <div class="container" class="buttons">
-                <link rel="stylesheet" href="button.css">
-                    <button class="btn btn-1" type="submit" onclick="tambahbarang.php" >Tambah</button>
-                    
+                    <link rel="stylesheet" href="button.css">
+                    <button class="btn btn-1" type="submit" onclick="tambahbarang.php">Tambah</button>
+
                 </div>
             </div>
         </div>
