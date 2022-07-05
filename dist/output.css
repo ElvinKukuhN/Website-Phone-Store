@@ -837,13 +837,13 @@ video {
 }
 
 .from-indigo-500 {
-  --tw-gradient-from: #6366f1;
+  --tw-gradient-from: #babbf0;
   --tw-gradient-to: rgb(99 102 241 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .from-purple-500 {
-  --tw-gradient-from: #a855f7;
+  --tw-gradient-from: #d7bdee;
   --tw-gradient-to: rgb(168 85 247 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
