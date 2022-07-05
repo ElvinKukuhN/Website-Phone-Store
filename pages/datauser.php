@@ -100,7 +100,7 @@
                 <div class="md:col-span-1">
                     <div class="px-4 sm:px-0">
                         <h3 class="text-lg font-medium leading-6 text-white">Profile</h3>
-                        <p class="mt-1 text-sm text-white">This information will be displayed publicly so be careful what you share.</p>
+                        <p class="mt-1 text-sm text-white">Fill in the appropriate bio on the following page</p>
                     </div>
                 </div>
                 <div class="mt-5 md:mt-0 md:col-span-2 shadow-2xl shadow-white">
@@ -239,7 +239,7 @@
             </div>
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                 <div>
-                    <h2 class="mb-6 text-sm font-semibold  uppercase text-white dark:text-white">Resources</h2>
+                    <h3 class="mb-6 text-sm font-semibold  uppercase text-white dark:text-white">Resources</h2>
                     <ul class="text-white dark:text-gray-400">
                         <li class="mb-4">
                             <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
@@ -268,6 +268,23 @@
                         </li>
                         <li>
                             <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">CONTACT US</h2>
+                    <ul class="text-white dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Jl surya utama, surakarta, Jawa Tengah, Indonesia</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">kustore@gmail.com</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline">(+62) 83852973543</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline">Surakarta, INDONESIA</a>
                         </li>
                     </ul>
                 </div>

@@ -98,23 +98,23 @@
     ?>
     <div class="sliderAx max-h-screen max-w-full">
         <div id="slider-1" class="container mx-auto w-screen">
-            <div class="bg-cover bg-center rounded-b-3xl  h-screen text-white py-24 px-10 object-fill" style="background-image: url(https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1422&q=80)">
+            <div class="bg-cover bg-center rounded-b-3xl  h-screen text-white py-24 px-10 object-fill" style="background-image: url(../images/header1.jpeg)">
                 <div class="md:w-1/2">
-                    <p class="font-bold text-sm uppercase">Services</p>
-                    <p class="text-3xl font-bold">Hello world</p>
-                    <p class="text-2xl mb-10 leading-none">Carousel with TailwindCSS and jQuery</p>
-                    <a href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">Contact us</a>
+                    <p class="font-bold text-sm uppercase">New Inspiration 2022</p>
+                    <p class="text-3xl font-bold">WORLD IN YOUR ARMS?</p>
+                    <p class="text-2xl mb-10 leading-none">Trending from mobile and headphone style collection</p>
+                    <a href="#CONTACT US" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">Contact</a>
                 </div>
             </div> <!-- container -->
             <br>
         </div>
 
         <div id="slider-2" class="container mx-auto rounded-lg">
-            <div class="bg-cover bg-top  h-screen text-white py-24 px-10 object-fill" style="background-image: url(https://images.unsplash.com/photo-1544144433-d50aff500b91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
-                <p class="font-bold text-sm uppercase">Services</p>
-                <p class="text-3xl font-bold">Hello world</p>
-                <p class="text-2xl mb-10 leading-none">Carousel with TailwindCSS and jQuery</p>
-                <a href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact us</a>
+            <div class="bg-cover bg-top  h-screen text-white py-24 px-10 object-fill" style="background-image: url(../images/header2.jpeg)">
+                <p class="font-bold text-sm uppercase">New Inspiration 2022</p>
+                <p class="text-3xl font-bold">WORLD IN YOUR ARMS?</p>
+                <p class="text-2xl mb-10 leading-none">Trending from mobile and headphone style collection</p>
+                <a href="#CONTACT US" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact</a>
             </div> <!-- container -->
             <br>
         </div>
@@ -131,7 +131,7 @@
     <br><br>
     <div class="  my-12 max-w-full flex justify-center ">
         <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
-            <span class="text-white">Iphone List</span>
+            <span class="text-white">Phone List</span>
         </div>
     </div>
 
@@ -148,15 +148,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                12 MP &bull; 256 GB
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">Iphone 11 pro</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 28.000.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -179,15 +179,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                12 MP &bull; 4.2 Inc
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">SAMSUNG GALAXY Z FLIP 3</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 16.000.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -210,15 +210,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                 12 MP &bull; 5.8 Inc
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">IPHONE XS</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 8.000.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -241,15 +241,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                40 MP &bull; 128 GB
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">SAMSUNG GALAXY S22 ULTRA</h4> 
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 18.000.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -272,15 +272,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                6.7 Inc &bull; 12 MP
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">IPHONE 13 PRO MAX</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 27.000.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -303,15 +303,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                50 MP &bull; 4 GB
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">REDMI 10C</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                           Rp 1.815.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -334,15 +334,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                13 MP &bull; 7 GB
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">INFINIX HOT 12i</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 1.550.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -365,15 +365,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                50 MP &bull; 3 GB
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">REALME C35</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 2.100.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -396,15 +396,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                50 MP &bull; 256 GB
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">OPPO A55</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 2.399.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -427,15 +427,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                50 MP &bull; 128 GB
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">VIVO Y21T</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 2.740.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -458,15 +458,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                Jangkauan 20 Meter &bull; Tahan 29 Jam
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">LOGITECH G733</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 2.000.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -489,15 +489,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                2.4 GHZ &bull; Dan banyak fitur lainnya
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">RAZER BLACKSHARK V20 PRO</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 3.000.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -520,15 +520,15 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                1300 mW &bull; 45 mm
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">AUDIO-TECHNICA ATH-G1</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 2.500.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -551,15 +551,46 @@
                                 New
                             </span>
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                2 baths &bull; 3 rooms
+                                2.4 GHZ &bull; 53 MM
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">A random Title</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">HYPERX CLOUD II</h4>
 
                         <div class="mt-1">
-                            $1800
-                            <span class="text-gray-600 text-sm"> /wk</span>
+                            Rp 1.200.000
+                            <span class="text-gray-600 text-sm"> /item</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
+                            <span class="text-sm text-gray-600">(based on 234 ratings)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper bg-gray-400 antialiased text-gray-900">
+            <div>
+
+                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                <div class="relative px-4 -mt-16  ">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-baseline">
+                            <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                New
+                            </span>
+                            <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                 7 MP &bull; 64 GB
+                            </div>
+                        </div>
+
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">IPHONE 8+</h4>
+
+                        <div class="mt-1">
+                            Rp 4.500.000
+                            <span class="text-gray-600 text-sm"> /item</span>
                         </div>
                         <div class="mt-4">
                             <span class="text-teal-600 text-md font-semibold">4/5 ratings </span>
@@ -617,6 +648,23 @@
                         </li>
                         <li>
                             <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">CONTACT US</h2>
+                    <ul class="text-white dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Jl surya utama, surakarta, Jawa Tengah, Indonesia</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">kustore@gmail.com</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline">(+62) 83852973543</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline">Surakarta, INDONESIA</a>
                         </li>
                     </ul>
                 </div>

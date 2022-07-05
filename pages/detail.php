@@ -203,6 +203,23 @@ $row = mysqli_fetch_array($list);
                         </li>
                     </ul>
                 </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">CONTACT US</h2>
+                    <ul class="text-white dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Jl surya utama, surakarta, Jawa Tengah, Indonesia</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">kustore@gmail.com</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline">(+62) 83852973543</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline">Surakarta, INDONESIA</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
