@@ -117,8 +117,6 @@ $list = mysqli_query($conn, "SELECT * FROM product INNER JOIN jenis ON product.i
                             <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
                                 Harga</th>
                             <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Edit</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
                                 Delete</th>
                             <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
                                 Details
@@ -151,13 +149,6 @@ $list = mysqli_query($conn, "SELECT * FROM product INNER JOIN jenis ON product.i
                                     <div class="text-sm leading-5 text-white"><?= $row["harga_product"]; ?></div>
                                 </td>
 
-                                <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='datauserUpdate.php?id_product=" . $row['id_product'] . "'"; ?>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                        </svg>
-                                    </button>
-                                </td>
 
                                 <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
                                     <button type="submit" onclick="<?php echo "location.href='deletebarang.php?id_product=" . $row['id_product'] . "'"; ?>">
@@ -178,8 +169,13 @@ $list = mysqli_query($conn, "SELECT * FROM product INNER JOIN jenis ON product.i
                     </tbody>
                 </table>
                 <div class="container" class="buttons">
+<<<<<<< Updated upstream
                     <link rel="stylesheet" href="../src/button.css">
                     <button class="btn btn-1" type="submit" onclick="tambahbarang.php">Tambah</button>
+=======
+                    <link rel="stylesheet" href="button.css">
+                    <button class="btn btn-1" type="submit" onclick="<?php echo "location.href='tambahbarang.php?id_product=" . $row['id_product'] . "'"; ?>">Tambah</button>
+>>>>>>> Stashed changes
 
                 </div>
             </div>
