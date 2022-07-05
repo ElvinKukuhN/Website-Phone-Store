@@ -1,7 +1,9 @@
 <?php
 require 'koneksi.php';
+$id = $_GET['id_product'];
 
-$list = mysqli_query($conn, "SELECT * FROM product INNER JOIN jenis ON product.id_jenis = jenis.id_jenis")
+$list = mysqli_query($conn, "SELECT * FROM product WHERE id_product = $id");
+$row = mysqli_fetch_array($list);
 
 ?>
 
@@ -12,7 +14,7 @@ $list = mysqli_query($conn, "SELECT * FROM product INNER JOIN jenis ON product.i
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KUstore - List Barang</title>
+    <title>KUstore - Detail</title>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
@@ -93,100 +95,53 @@ $list = mysqli_query($conn, "SELECT * FROM product INNER JOIN jenis ON product.i
 
         });
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 </head>
 
 <body class="bg-gradient-to-r from-purple-900 via-indigo-900 to-black">
-
-
     <?php
     include 'header.php';
     ?>
-
-
-    <!-- Table End -->
-    <div class="flex flex-col mt-10 bg-transparent mx-3">
-        <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div class="inline-block min-w-full overflow-hidden align-middle border-b border-transparent shadow-2xl sm:rounded-lg">
-                <table class="min-w-full shadow-2xl">
-                    <thead>
-                        <tr>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Name</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Tipe</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Harga</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Edit</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Delete</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Details
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="bg-transparent">
-                        <?php foreach ($list as $row) : ?>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
-                                        <div class="flex-shrink-0 w-10 h-10">
-                                            <img class="w-10 h-10" src="../images/<?= $row["gambar_product"]; ?>" alt="admin dashboard ui">
-                                        </div>
-
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium leading-5 text-white">
-                                                <?= $row["nama_product"]; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-white"><?= $row["jenis"]; ?></div>
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-white"><?= $row["harga_product"]; ?></div>
-                                </td>
-
-                                <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='datauserUpdate.php?id_product=" . $row['id_product'] . "'"; ?>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                        </svg>
-                                    </button>
-                                </td>
-
-                                <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='deletebarang.php?id_product=" . $row['id_product'] . "'"; ?>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                        </svg>
-                                    </button>
-                                </td>
-
-                                <td class="px-6 py-4 text-sm leading-5  text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='detailbarang.php?id_product=" . $row['id_product'] . "'"; ?>">
-                                        <img src="../images/search.png" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"></img>
-                                    </button>
-                                </td>
-
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <div class="container" class="buttons">
-                    <link rel="stylesheet" href="../src/button.css">
-                    <button class="btn btn-1" type="submit" onclick="tambahbarang.php">Tambah</button>
-
-                </div>
+    <!-- Details Start -->
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="flex justify-center ">
+        <div class="bg-transparent shadow-2xl shadow-fuchsia-500 overflow-hidden w-full max-w-screen-lg border-2  border-fuchsia-400 sm:rounded-lg mx-5 mt-5">
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 font-bold text-white">Applicant Information</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-50">Personal details and application.</p>
+            </div>
+            <div class="border-t-2 border-gray-200">
+                <dl>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Nama Barang</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><?= $row["nama_product"]; ?></dd>
+                    </div>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Tipe</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><?= $row["tipe"]; ?></dd>
+                    </div>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Harga Barang</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><?= $row["harga_product"]; ?></dd>
+                    </div>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Keterangan</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><?= $row["keterangan"]; ?></dd>
+                    </div>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Image</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><img src="../images/<?= $row["gambar_product"]; ?>" class="max-w-xs rounded-lg shadow-sm"></dd>
+                    </div>
+                </dl>
             </div>
         </div>
     </div>
-    <!-- Table End -->
 
+    <!-- Details End -->
 
     <!-- Footer Start -->
 
@@ -269,8 +224,6 @@ $list = mysqli_query($conn, "SELECT * FROM product INNER JOIN jenis ON product.i
     </footer>
 
     <!-- Footer End -->
-
-
 </body>
 
 </html>
