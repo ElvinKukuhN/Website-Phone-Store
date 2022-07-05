@@ -64,6 +64,138 @@ require 'koneksi.php';
     <!-- Section Start -->
     <br><br>
 
+
+    <!-- Iphone List -->
+    <div>
+
+        <div class="  my-12 max-w-full flex justify-center ">
+            <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
+                <span class="text-white">Iphone List</span>
+            </div>
+        </div>
+        <div class="">
+            <div class=" flex flex-wrap justify-center mx-auto my-52 lg:space-y-0 sm:my-3 lg:gap-6 lg:grid lg:grid-cols-5 shadow-lg p-3 -mt-10">
+                <?php $list = query("SELECT * FROM product WHERE id_jenis = 1 ") ?>
+                <<?php foreach ($list as $row) : ?> <div class="wrapper bg-transparent antialiased text-gray-900">
+                    <div class=" w-96 h-5/6 flex flex-wrap justify-center ">
+                        <img src="../images/<?= $row['gambar_product']; ?>" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                        <div class="relative px-4 -mt-16  ">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-baseline">
+                                    <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                        New
+                                    </span>
+                                    <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                        <?= $row['tipe']; ?>
+                                    </div>
+                                </div>
+
+                                <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate"><?= $row['nama_product']; ?></h4>
+
+                                <div class="mt-1">
+                                    <?= $row['harga_product']; ?>
+                                </div>
+                                <div class="mt-1">
+                                    <?= $row['keterangan']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        <?php endforeach; ?>
+        </div>
+
+    </div>
+
+
+
+    <!-- Headphone List -->
+    <div>
+
+        <div class="  my-12 max-w-full flex justify-center ">
+            <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
+                <span class="text-white">Headphone List</span>
+            </div>
+        </div>
+        <div class="">
+            <div class=" flex flex-wrap justify-center mx-auto my-52 lg:space-y-0 sm:my-3 lg:gap-6 lg:grid lg:grid-cols-5 shadow-lg p-3 -mt-10">
+                <?php $list = query("SELECT * FROM product WHERE id_jenis = 2 ") ?>
+                <<?php foreach ($list as $row) : ?> <div class="wrapper bg-transparent antialiased text-gray-900">
+                    <div class=" w-96 h-5/6 flex flex-wrap justify-center ">
+                        <img src="../images/<?= $row['gambar_product']; ?>" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                        <div class="relative px-4 -mt-16  ">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-baseline">
+                                    <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                        New
+                                    </span>
+                                    <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                        <?= $row['tipe']; ?>
+                                    </div>
+                                </div>
+
+                                <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate"><?= $row['nama_product']; ?></h4>
+
+                                <div class="mt-1">
+                                    <?= $row['harga_product']; ?>
+                                </div>
+                                <div class="mt-1">
+                                    <?= $row['keterangan']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        <?php endforeach; ?>
+        </div>
+
+    </div>
+
+    <!-- Samsung List -->
+    <div>
+
+        <div class="  my-12 max-w-full flex justify-center ">
+            <div class="max-w-lg font-bold bg-fuchsia-500 text-4xl py-4 px-10 shadow-2xl shadow-white rounded-full flex justify-center ">
+                <span class="text-white">Samsung List</span>
+            </div>
+        </div>
+        <div class="">
+            <div class=" flex flex-wrap justify-center mx-auto my-52 lg:space-y-0 sm:my-3 lg:gap-6 lg:grid lg:grid-cols-5  shadow-lg p-3 -mt-10">
+                <?php $list = query("SELECT * FROM product WHERE id_jenis = 3 ") ?>
+                <<?php foreach ($list as $row) : ?> <div class="wrapper bg-transparent antialiased text-gray-900">
+                    <div class=" w-96 h-5/6 flex flex-wrap justify-center pb-3 ">
+                        <img src="../images/<?= $row['gambar_product']; ?>" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+
+                        <div class="relative px-4 -mt-16  ">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-baseline">
+                                    <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                        New
+                                    </span>
+                                    <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                                        <?= $row['tipe']; ?>
+                                    </div>
+                                </div>
+
+                                <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate"><?= $row['nama_product']; ?></h4>
+
+                                <div class="mt-1">
+                                    <?= $row['harga_product']; ?>
+                                </div>
+                                <div class="mt-1">
+                                    <?= $row['keterangan']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        <?php endforeach; ?>
+        </div>
+
+    </div>
+
     <!-- Section End -->
     <br><br><br><br><br><br>
 
@@ -129,6 +261,7 @@ require 'koneksi.php';
                     </ul>
                 </div>
             </div>
+        </div>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
         <div class="sm:flex sm:items-center sm:justify-between">
