@@ -104,37 +104,51 @@
                     </div>
                 </div>
                 <div class="mt-5 md:mt-0 md:col-span-2 shadow-2xl shadow-white">
-                    <form action="terima-data.php" method="POST" enctype="multipart/form-data">
+                    <form action="terima-barang.php" method="POST" enctype="multipart/form-data">
                         <div class="shadow overflow-hidden sm:rounded-md">
                             <div class="px-4 py-5 bg-pink-400  sm:p-6">
                                 <div class="grid grid-cols-6 gap-6">
-                                    
+
 
                                     <div class="col-span-6">
                                         <label for="street-address" class="block text-sm font-medium text-white">Nama Barang</label>
-                                        <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
+                                        <input type="text" name="nama-barang" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6">
                                         <label for="street-address" class="block text-sm font-medium text-white">Tipe</label>
-                                        <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
+                                        <input type="text" name="tipe" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6">
                                         <label for="street-address" class="block text-sm font-medium text-white">Harga Barang</label>
-                                        <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
+                                        <input type="text" name="harga-barang" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
                                     </div>
+
 
                                     <div class="col-span-6">
                                         <label for="about" class="block text-sm font-medium text-white"> Keterangan </label>
                                         <div class="mt-1">
-                                            <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 px-2 py-1 block w-full sm:text-sm border border-gray-300 bg-pink-300 rounded-md" placeholder="you@example.com"></textarea>
+                                            <textarea id="about" name="keterangan" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 px-2 py-1 block w-full sm:text-sm border border-gray-300 bg-pink-300 rounded-md" placeholder="you@example.com"></textarea>
                                         </div>
                                         <p class="mt-2 text-sm text-white">Brief description for your profile. URLs are hyperlinked.</p>
                                     </div>
 
                                     <div class="col-span-6">
-                                        <label class="block text-sm font-medium text-gray-700"> Photo </label>
+                                        <label for="jenis" class="block text-sm font-medium text-white">Jenis</label>
+                                        <select id="jenis" name="jenis" class="mt-1 block w-1/2 py-2 px-3 border text-sm border-blue-600 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-3xl">>
+                                            <?php
+                                            require('koneksi.php');
+                                            $data = mysqli_query($conn, "SELECT * FROM jenis");
+                                            while ($d = mysqli_fetch_array($data)) {
+                                                echo "<option value='" . $d['id_jenis'] . "'>" . $d['jenis'] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-span-6">
+                                        <label class="block text-sm font-medium text-gray-700"> Gambar </label>
                                         <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                             <div class="space-y-1 text-center">
                                                 <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
