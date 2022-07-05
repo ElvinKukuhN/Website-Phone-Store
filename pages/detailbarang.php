@@ -1,10 +1,11 @@
 <?php
-
 require 'koneksi.php';
+$id = $_GET['id_product'];
 
+$list = mysqli_query($conn, "SELECT * FROM product WHERE id_product = $id");
+$row = mysqli_fetch_array($list);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,63 +14,138 @@ require 'koneksi.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KuStore</title>
+    <title>KUstore - Detail</title>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.8.9/tailwind.min.css">
 
     <link href="../dist/output.css" rel="stylesheet">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+        var cont = 0;
 
+        function loopSlider() {
+            var xx = setInterval(function() {
+                switch (cont) {
+                    case 0: {
+                        $("#slider-1").fadeOut(400);
+                        $("#slider-2").delay(400).fadeIn(400);
+                        $("#sButton1").removeClass("bg-purple-800");
+                        $("#sButton2").addClass("bg-purple-800");
+                        cont = 1;
+
+                        break;
+                    }
+                    case 1: {
+
+                        $("#slider-2").fadeOut(400);
+                        $("#slider-1").delay(400).fadeIn(400);
+                        $("#sButton2").removeClass("bg-purple-800");
+                        $("#sButton1").addClass("bg-purple-800");
+
+                        cont = 0;
+
+                        break;
+                    }
+
+
+                }
+            }, 8000);
+
+        }
+
+        function reinitLoop(time) {
+            clearInterval(xx);
+            setTimeout(loopSlider(), time);
+        }
+
+
+
+        function sliderButton1() {
+
+            $("#slider-2").fadeOut(400);
+            $("#slider-1").delay(400).fadeIn(400);
+            $("#sButton2").removeClass("bg-purple-800");
+            $("#sButton1").addClass("bg-purple-800");
+            reinitLoop(4000);
+            cont = 0
+
+        }
+
+        function sliderButton2() {
+            $("#slider-1").fadeOut(400);
+            $("#slider-2").delay(400).fadeIn(400);
+            $("#sButton1").removeClass("bg-purple-800");
+            $("#sButton2").addClass("bg-purple-800");
+            reinitLoop(4000);
+            cont = 1
+
+        }
+
+        $(window).ready(function() {
+            $("#slider-2").hide();
+            $("#sButton1").addClass("bg-purple-800");
+
+
+            loopSlider();
+
+
+
+
+
+
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 </head>
 
 <body class="bg-gradient-to-r from-purple-900 via-indigo-900 to-black">
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-
-    <!-- Header Start -->
     <?php
     include 'header.php';
     ?>
-    <div class="sliderAx max-h-screen max-w-full">
-        <div id="slider-1" class="container mx-auto w-screen">
-            <div class="bg-cover bg-center rounded-b-3xl  h-screen text-white py-24 px-10 object-fill" style="background-image: url(../images/header1.jpeg)">
-                <div class="md:w-1/2">
-                    <p class="font-bold text-sm uppercase">New Inspiration 2022</p>
-                    <p class="text-3xl font-bold">WORLD IN YOUR ARMS?</p>
-                    <p class="text-2xl mb-10 leading-none">Trending from mobile and headphone style collection</p>
-                    <a href="#CONTACT US" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">Contact</a>
-                </div>
-            </div> <!-- container -->
-            <br>
-        </div>
-
-        <div id="slider-2" class="container mx-auto rounded-lg">
-            <div class="bg-cover bg-top  h-screen text-white py-24 px-10 object-fill" style="background-image: url(../images/header2.jpeg)">
-                <p class="font-bold text-sm uppercase">New Inspiration 2022</p>
-                <p class="text-3xl font-bold">WORLD IN YOUR ARMS?</p>
-                <p class="text-2xl mb-10 leading-none">Trending from mobile and headphone style collection</p>
-                <a href="#CONTACT US" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact</a>
-            </div> <!-- container -->
-            <br>
-        </div>
-        <div class="flex justify-between w-12 mx-auto pb-2">
-            <button id="sButton1" onclick="sliderButton1()" class="bg-purple-400 rounded-full w-4 pb-2 "></button>
-            <button id="sButton2" onclick="sliderButton2() " class="bg-purple-400 rounded-full w-4 p-2"></button>
+    <!-- Details Start -->
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="flex justify-center ">
+        <div class="bg-transparent shadow-2xl shadow-fuchsia-500 overflow-hidden w-full max-w-screen-lg border-2  border-fuchsia-400 sm:rounded-lg mx-5 mt-5">
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 font-bold text-white">Applicant Information</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-50">Personal details and application.</p>
+            </div>
+            <div class="border-t-2 border-gray-200">
+                <dl>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Nama Barang</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><?= $row["nama_product"]; ?></dd>
+                    </div>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Tipe</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><?= $row["tipe"]; ?></dd>
+                    </div>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Harga Barang</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><?= $row["harga_product"]; ?></dd>
+                    </div>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Keterangan</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><?= $row["keterangan"]; ?></dd>
+                    </div>
+                    <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-white">Image</dt>
+                        <dd class="mt-1 text-md text-white sm:mt-0 sm:col-span-2"><img src="../images/<?= $row["gambar_product"]; ?>" class="max-w-xs rounded-lg shadow-sm"></dd>
+                    </div>
+                </dl>
+            </div>
         </div>
     </div>
 
-    <!-- Header End -->
-
-
-    <!-- Section Start -->
-    <br><br>
-
-    <!-- Section End -->
-    <br><br><br><br><br><br>
+    <!-- Details End -->
 
     <!-- Footer Start -->
 
-    <footer class="p-4 bg-purple-800 sm:p-6 dark:bg-gray-800 mt-96">
+    <footer class="p-4 bg-purple-800 sm:p-6 dark:bg-gray-800 mt-64  ">
         <div class="md:flex md:justify-between ">
             <div class="mb-6 md:mb-0">
                 <a href="https://flowbite.com/" class="flex items-center">
@@ -111,23 +187,6 @@ require 'koneksi.php';
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">CONTACT US</h2>
-                    <ul class="text-white dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="#" class="hover:underline">Jl surya utama, surakarta, Jawa Tengah, Indonesia</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="#" class="hover:underline">kustore@gmail.com</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">(+62) 83852973543</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">Surakarta, INDONESIA</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
@@ -165,7 +224,6 @@ require 'koneksi.php';
     </footer>
 
     <!-- Footer End -->
-
 </body>
 
 </html>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,17 +114,44 @@
                         </div>
                         <!-- Primary Navbar items -->
                         <div class="hidden md:flex items-center space-x-1">
-                            <a href="home.php" class="py-4 px-2 text-fuchsia-500 border-b-4 border-fuchsia-500 font-semibold ">Home</a>
+                            <a href="home.php" class="py-4 px-2 text-white  font-semibold hover:text-fuchsia-500 transition duration-300 ">Home</a>
                             <a href="datauser.php" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">User-data</a>
                             <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">About</a>
                             <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">Contact Us</a>
                         </div>
                     </div>
+
+                    <?php
+
+
+                    if (isset($_SESSION["login"])) {
+                    ?>
+
+                        <!-- Secondary Navbar items -->
+                        <div class="hidden md:flex items-center space-x-3 ">
+                            <a href="logout.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log out</a>
+                        </div>
+                    <?php
+                    } else {
+
+                    ?>
+                        <!-- Secondary Navbar items -->
+                        <div class="hidden md:flex items-center space-x-3 ">
+                            <a href="login.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log In</a>
+                            <a href="register.php" class="py-2 px-2 font-medium text-white bg-fuchsia-500 rounded hover:bg-fuchsia-400 transition duration-300">Sign Up</a>
+                        </div>
+                    <?php
+                    }
+
+
+
+                    ?>
+
                     <!-- Secondary Navbar items -->
-                    <div class="hidden md:flex items-center space-x-3 ">
+                    <!-- <div class="hidden md:flex items-center space-x-3 ">
                         <a href="login.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log In</a>
                         <a href="register.php" class="py-2 px-2 font-medium text-white bg-fuchsia-500 rounded hover:bg-fuchsia-400 transition duration-300">Sign Up</a>
-                    </div>
+                    </div> -->
                     <!-- Mobile menu button -->
                     <div class="md:hidden flex items-center">
                         <button class="outline-none mobile-menu-button">

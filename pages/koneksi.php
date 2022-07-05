@@ -18,7 +18,7 @@ function query($query)
     return $rows;
 }
 
-function tambah($data) 
+function tambah($data)
 {
 
     global $conn;
@@ -178,4 +178,42 @@ function login($data)
             exit;
         }
     }
+}
+
+function tambahBarang($data)
+{
+
+    global $conn;
+
+    $nama_barang = $data["nama-barang"];
+    $tipe = $data["tipe"];
+    $harga_barang = $data["harga-barang"];
+    $keterangan = $data["keterangan"];
+    $jenis = $data["jenis"];
+    $file_upload = $_FILES['file-upload']['name'];
+    $errorfiles = $_FILES['file-upload']['error'];
+    $tmpname = $_FILES['file-upload']['tmp_name'];
+    if ($errorfiles == 0) {
+        move_uploaded_file($tmpname, "../images/" . $file_upload);
+    }
+
+    $nama_file = "upload/e.txt";
+
+    $data = "$file_upload";
+    $file = fopen($nama_file, "w");
+    fwrite($file, $data);
+    fclose($file);
+
+    $query = "INSERT INTO product (id_jenis,nama_product,tipe,keterangan,gambar_product,harga_product)
+    VALUES ('$jenis',
+    '$nama_barang',
+    '$tipe',
+    '$keterangan',
+    '$file_upload',
+    '$harga_barang'
+    )";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
 }

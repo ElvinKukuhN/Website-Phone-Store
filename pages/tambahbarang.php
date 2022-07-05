@@ -1,11 +1,3 @@
-<?php
-
-require 'koneksi.php';
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,64 +5,183 @@ require 'koneksi.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KuStore</title>
+    <title>KUstore - Data User input</title>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.8.9/tailwind.min.css">
 
     <link href="../dist/output.css" rel="stylesheet">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+        var cont = 0;
 
+        function loopSlider() {
+            var xx = setInterval(function() {
+                switch (cont) {
+                    case 0: {
+                        $("#slider-1").fadeOut(400);
+                        $("#slider-2").delay(400).fadeIn(400);
+                        $("#sButton1").removeClass("bg-purple-800");
+                        $("#sButton2").addClass("bg-purple-800");
+                        cont = 1;
+
+                        break;
+                    }
+                    case 1: {
+
+                        $("#slider-2").fadeOut(400);
+                        $("#slider-1").delay(400).fadeIn(400);
+                        $("#sButton2").removeClass("bg-purple-800");
+                        $("#sButton1").addClass("bg-purple-800");
+
+                        cont = 0;
+
+                        break;
+                    }
+
+
+                }
+            }, 8000);
+
+        }
+
+        function reinitLoop(time) {
+            clearInterval(xx);
+            setTimeout(loopSlider(), time);
+        }
+
+
+
+        function sliderButton1() {
+
+            $("#slider-2").fadeOut(400);
+            $("#slider-1").delay(400).fadeIn(400);
+            $("#sButton2").removeClass("bg-purple-800");
+            $("#sButton1").addClass("bg-purple-800");
+            reinitLoop(4000);
+            cont = 0
+
+        }
+
+        function sliderButton2() {
+            $("#slider-1").fadeOut(400);
+            $("#slider-2").delay(400).fadeIn(400);
+            $("#sButton1").removeClass("bg-purple-800");
+            $("#sButton2").addClass("bg-purple-800");
+            reinitLoop(4000);
+            cont = 1
+
+        }
+
+        $(window).ready(function() {
+            $("#slider-2").hide();
+            $("#sButton1").addClass("bg-purple-800");
+
+
+            loopSlider();
+
+
+
+
+
+
+        });
+    </script>
 </head>
 
 <body class="bg-gradient-to-r from-purple-900 via-indigo-900 to-black">
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-
-    <!-- Header Start -->
     <?php
     include 'header.php';
     ?>
-    <div class="sliderAx max-h-screen max-w-full">
-        <div id="slider-1" class="container mx-auto w-screen">
-            <div class="bg-cover bg-center rounded-b-3xl  h-screen text-white py-24 px-10 object-fill" style="background-image: url(../images/header1.jpeg)">
-                <div class="md:w-1/2">
-                    <p class="font-bold text-sm uppercase">New Inspiration 2022</p>
-                    <p class="text-3xl font-bold">WORLD IN YOUR ARMS?</p>
-                    <p class="text-2xl mb-10 leading-none">Trending from mobile and headphone style collection</p>
-                    <a href="#CONTACT US" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">Contact</a>
-                </div>
-            </div> <!-- container -->
-            <br>
-        </div>
-
-        <div id="slider-2" class="container mx-auto rounded-lg">
-            <div class="bg-cover bg-top  h-screen text-white py-24 px-10 object-fill" style="background-image: url(../images/header2.jpeg)">
-                <p class="font-bold text-sm uppercase">New Inspiration 2022</p>
-                <p class="text-3xl font-bold">WORLD IN YOUR ARMS?</p>
-                <p class="text-2xl mb-10 leading-none">Trending from mobile and headphone style collection</p>
-                <a href="#CONTACT US" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact</a>
-            </div> <!-- container -->
-            <br>
-        </div>
-        <div class="flex justify-between w-12 mx-auto pb-2">
-            <button id="sButton1" onclick="sliderButton1()" class="bg-purple-400 rounded-full w-4 pb-2 "></button>
-            <button id="sButton2" onclick="sliderButton2() " class="bg-purple-400 rounded-full w-4 p-2"></button>
-        </div>
-    </div>
-
-    <!-- Header End -->
-
 
     <!-- Section Start -->
-    <br><br>
+    <Section class="mx-3 mt-3 shadow-2xl shadow-fuchsia-500">
+        <div class="shadow-lg shadow-fuchsia-500">
+            <div class="md:grid md:grid-cols-3 md:gap-6 shadow-lg shadow-fuchsia-500">
+                <div class="md:col-span-1">
+                    <div class="px-4 sm:px-0">
+                        <h3 class="text-lg font-medium leading-6 text-white">Profile</h3>
+                        <p class="mt-1 text-sm text-white">This information will be displayed publicly so be careful what you share.</p>
+                    </div>
+                </div>
+                <div class="mt-5 md:mt-0 md:col-span-2 shadow-2xl shadow-white">
+                    <form action="terima-barang.php" method="POST" enctype="multipart/form-data">
+                        <div class="shadow overflow-hidden sm:rounded-md">
+                            <div class="px-4 py-5 bg-pink-400  sm:p-6">
+                                <div class="grid grid-cols-6 gap-6">
+
+
+                                    <div class="col-span-6">
+                                        <label for="street-address" class="block text-sm font-medium text-white">Nama Barang</label>
+                                        <input type="text" name="nama-barang" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6">
+                                        <label for="street-address" class="block text-sm font-medium text-white">Tipe</label>
+                                        <input type="text" name="tipe" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6">
+                                        <label for="street-address" class="block text-sm font-medium text-white">Harga Barang</label>
+                                        <input type="text" name="harga-barang" id="street-address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 bg-pink-300 rounded-md">
+                                    </div>
+
+
+                                    <div class="col-span-6">
+                                        <label for="about" class="block text-sm font-medium text-white"> Keterangan </label>
+                                        <div class="mt-1">
+                                            <textarea id="about" name="keterangan" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 px-2 py-1 block w-full sm:text-sm border border-gray-300 bg-pink-300 rounded-md" placeholder="you@example.com"></textarea>
+                                        </div>
+                                        <p class="mt-2 text-sm text-white">Brief description for your profile. URLs are hyperlinked.</p>
+                                    </div>
+
+                                    <div class="col-span-6">
+                                        <label for="jenis" class="block text-sm font-medium text-white">Jenis</label>
+                                        <select id="jenis" name="jenis" class="mt-1 block w-1/2 py-2 px-3 border text-sm border-blue-600 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-3xl">>
+                                            <?php
+                                            require('koneksi.php');
+                                            $data = mysqli_query($conn, "SELECT * FROM jenis");
+                                            while ($d = mysqli_fetch_array($data)) {
+                                                echo "<option value='" . $d['id_jenis'] . "'>" . $d['jenis'] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-span-6">
+                                        <label class="block text-sm font-medium text-gray-700"> Gambar </label>
+                                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                            <div class="space-y-1 text-center">
+                                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <div class="flex text-sm text-white">
+                                                    <label for="file-upload" class="relative cursor-pointer px-2 border-2 border-pink-600 rounded-md font-medium text-white-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                        <span>Upload a file</span>
+                                                        <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                                    </label>
+                                                    <p class="pl-1">or drag and drop</p>
+                                                </div>
+                                                <p class="text-xs text-white">PNG, JPG, GIF up to 10MB</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-4 py-3 bg-pink-400 text-right sm:px-6">
+                                    <button type="submit" class="inline-flex justify-center py-2 px-4 border-2 border-pink-700 shadow-xl text-sm font-medium rounded-md text-white bg-pink-400  hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">Save</button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Section End -->
-    <br><br><br><br><br><br>
 
     <!-- Footer Start -->
 
-    <footer class="p-4 bg-purple-800 sm:p-6 dark:bg-gray-800 mt-96">
-        <div class="md:flex md:justify-between ">
+    <footer class="p-4 bg-purple-800 sm:p-6 dark:bg-gray-800 mt-8 ">
+        <div class="md:flex md:justify-between  ">
             <div class="mb-6 md:mb-0">
                 <a href="https://flowbite.com/" class="flex items-center">
                     <img src="../images/phone-call-svgrepo-com (1).svg" class="mr-3 h-10" alt="FlowBite Logo">
@@ -111,23 +222,6 @@ require 'koneksi.php';
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">CONTACT US</h2>
-                    <ul class="text-white dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="#" class="hover:underline">Jl surya utama, surakarta, Jawa Tengah, Indonesia</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="#" class="hover:underline">kustore@gmail.com</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">(+62) 83852973543</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">Surakarta, INDONESIA</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
@@ -165,6 +259,7 @@ require 'koneksi.php';
     </footer>
 
     <!-- Footer End -->
+
 
 </body>
 
