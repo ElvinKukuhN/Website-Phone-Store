@@ -257,7 +257,7 @@ $list = mysqli_query($conn, "SELECT * FROM product INNER JOIN jenis ON product.i
                     </tbody>
                 </table>
                 <div class="container" class="buttons">
-                    <link rel="stylesheet" href="../src/">
+                    <link rel="stylesheet" href="../src/button.css">
                     <button class="btn btn-1" type="submit" onclick="<?php echo "location.href='tambahbarang.php?id_product=" . $row['id_product'] . "'"; ?>">Tambah</button>
 
 
