@@ -274,6 +274,10 @@ if (isset($_POST["login"])) {
                                 Don't have an account?
                                 <a href="register.php" class="text-fuchsia-500 hover:text-fuchsia-600 focus:text-fuchsia-600 transition duration-200 ease-in-out">Sign Up</a>
                             </p>
+                            <p class="text-sm text-white font-semibold mt-2 pt-1 mb-0">
+                                You are Admin?
+                                <a href="loginadmin.php" class="text-fuchsia-500 hover:text-fuchsia-600 focus:text-fuchsia-600 transition duration-200 ease-in-out">Login-Admin</a>
+                            </p>
                         </div>
                     </form>
                 </div>

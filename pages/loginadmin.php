@@ -1,24 +1,37 @@
 <?php
-
-
-
-
 session_start();
 
-if (!isset($_SESSION["login"])) {
 
-?>
-    <script>
-        window.location.href = "loginadmin.php";
-    </script>
-<?php
-
-}
 require 'koneksi.php';
+if (isset($_POST["login"])) {
 
-$list = mysqli_query($conn, "SELECT * FROM data_diri")
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $result = mysqli_query($conn, "SELECT * FROM admin WHERE email = '$email'");
+
+    // Cek Email
+    if (mysqli_num_rows($result) === 1) {
+
+        // Cek Password
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row["password"])) {
+
+            // cek Session
+            $_SESSION["login"] = true;
+?>
+            <script>
+                window.location.href = "list-barang.php";
+            </script>
+<?php
+            exit;
+        }
+    }
+}
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +40,7 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KUstore - List Data User</title>
+    <title>KUStore - Sign In</title>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
@@ -108,11 +121,15 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
 
         });
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 </head>
 
 <body class="bg-gradient-to-r from-purple-900 via-indigo-900 to-black">
-
-
+    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
     <!-- Header Start -->
     <header>
         <nav class="bg-purple-800 shadow-lg">
@@ -128,8 +145,8 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
                         </div>
                         <!-- Primary Navbar items -->
                         <div class="hidden md:flex items-center space-x-1">
-                            <a href="list-barang.php" class="py-4 px-2 text-white  font-semibold hover:text-fuchsia-500 transition duration-300 ">List-Barang</a>
-                            <a href="list-user.php" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">List-User</a>
+                            <a href="home.php" class="py-4 px-2 text-white  font-semibold hover:text-fuchsia-500 transition duration-300 ">Home</a>
+                            <a href="datauser.php" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">User-data</a>
                             <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">About</a>
                             <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">Contact Us</a>
                         </div>
@@ -138,7 +155,7 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
                     <?php
 
 
-                    if (isset($_SESSION["login"])) {
+                    if (isset($_SESSION["loginadmin"])) {
                     ?>
 
                         <!-- Secondary Navbar items -->
@@ -174,8 +191,10 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
             <!-- mobile menu -->
             <div class="hidden mobile-menu">
                 <ul class="">
-                    <li class="active"><a href="list-barang.php" class="block text-sm px-2 py-4 text-white bg-fuchsia-500 font-semibold">List-Barang</a></li>
-                    <li><a href="list-user.php" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">List-User</a></li>
+                    <li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-fuchsia-500 font-semibold">Home</a></li>
+                    <li><a href="#services" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">User-data</a></li>
+                    <li><a href="#about" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">About</a></li>
+                    <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">Contact Us</a></li>
                 </ul>
             </div>
             <script>
@@ -189,86 +208,83 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
         </nav>
     </header>
     <!-- Header End -->
+    <!-- form Login Start -->
+    <section class="h-screen">
+        <div class="px-6 h-full text-gray-800">
+            <div class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
+                <div class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
+                    <img src="../images/pngwing.com.png" class="w-10/12" alt="Sample image" />
+                </div>
+                <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+                    <form action="" method="POST">
+                        <div class="flex flex-row items-center justify-center lg:justify-start">
+                            <p class="text-lg text-white mb-0 mr-4">Sign in with</p>
+                            <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" class="inline-block p-3 bg-fuchsia-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1">
+                                <!-- Facebook -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4">
+                                    <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                                </svg>
+                            </button>
 
+                            <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" class="inline-block p-3 bg-fuchsia-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1">
+                                <!-- Twitter -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
+                                    <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                                </svg>
+                            </button>
 
-    <!-- Table End -->
-    <div class="flex flex-col mt-10 bg-transparent mx-3">
-        <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div class="inline-block min-w-full overflow-hidden align-middle border-b border-transparent shadow-2xl sm:rounded-lg">
-                <table class="min-w-full shadow-2xl">
-                    <thead>
-                        <tr>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Name</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Email</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                country</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Edit</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Delete</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Details
-                            </th>
-                        </tr>
-                    </thead>
+                            <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" class="inline-block p-3 bg-fuchsia-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1">
+                                <!-- Linkedin -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4">
+                                    <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+                                </svg>
+                            </button>
+                        </div>
 
-                    <tbody class="bg-transparent">
-                        <?php foreach ($list as $row) : ?>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
-                                        <div class="flex-shrink-0 w-10 h-10">
-                                            <img class="w-10 h-10 rounded-full" src="upload/<?= $row["img"]; ?>" alt="admin dashboard ui">
-                                        </div>
+                        <div class="flex items-center my-4 before:flex-1 text-white before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
+                            <p class="text-center font-semibold mx-4 mb-0">Or</p>
+                        </div>
 
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium leading-5 text-white">
-                                                <?= $row["first_name"]; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
+                        <!-- Email input -->
+                        <div class="mb-6">
+                            <input type="email" name="email" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-fuchsia-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Email address" />
+                        </div>
 
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-white"><?= $row["email"]; ?></div>
-                                </td>
+                        <!-- Password input -->
+                        <div class="mb-6">
+                            <input type="password" name="password" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-fuchsia-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Password" />
+                        </div>
 
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-white"><?= $row["country"]; ?></div>
-                                </td>
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-fuchsia-600 checked:border-fuchsia-800 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" id="exampleCheck2" />
+                                <label class="form-check-label inline-block text-white" for="exampleCheck2">Remember me</label>
+                            </div>
+                            <a href="#!" class="text-white">Forgot password?</a>
+                        </div>
 
-                                <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='datauserUpdate.php?id_data_diri=" . $row['id_data_diri'] . "'"; ?>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                        </svg>
-                                    </button>
-                                </td>
-
-                                <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='delete.php?id_data_diri=" . $row['id_data_diri'] . "'"; ?>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                        </svg>
-                                    </button>
-                                </td>
-
-                                <td class="px-6 py-4 text-sm leading-5  text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='detail.php?id_data_diri=" . $row['id_data_diri'] . "'"; ?>">
-                                        <img src="../images/search.png" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"></img>
-                                    </button>
-                                </td>
-
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        <div class="text-center lg:text-left">
+                            <button type="submit" name="login" class="inline-block px-7 py-3 bg-fuchsia-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-800 active:shadow-lg transition duration-150 ease-in-out">
+                                Login
+                            </button>
+                            <p class="text-sm text-white font-semibold mt-2 pt-1 mb-0">
+                                Don't have an account?
+                                <a href="registeradmin.php" class="text-fuchsia-500 hover:text-fuchsia-600 focus:text-fuchsia-600 transition duration-200 ease-in-out">Sign Up</a>
+                            </p>
+                            <p class="text-sm text-white font-semibold mt-2 pt-1 mb-0">
+                                You are User?
+                                <a href="login.php" class="text-fuchsia-500 hover:text-fuchsia-600 focus:text-fuchsia-600 transition duration-200 ease-in-out">Login-User</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Table End -->
+    </section>
+    <!-- Form Login End -->
 
 
     <!-- Footer Start -->
@@ -369,8 +385,6 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
     </footer>
 
     <!-- Footer End -->
-
-
 </body>
 
 </html>

@@ -1,4 +1,16 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION["login"])) {
+
+?>
+    <script>
+        window.location.href = "loginadmin.php";
+    </script>
+<?php
+
+}
 require 'koneksi.php';
 $id = $_GET['id_data_diri'];
 
@@ -14,7 +26,7 @@ $row = mysqli_fetch_array($list);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KUstore - Detail</title>
+    <title>KUstore - Detail User</title>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
@@ -103,9 +115,82 @@ $row = mysqli_fetch_array($list);
 </head>
 
 <body class="bg-gradient-to-r from-purple-900 via-indigo-900 to-black">
-    <?php
-    include 'header.php';
-    ?>
+    <!-- Header Start -->
+    <header>
+        <nav class="bg-purple-800 shadow-lg">
+            <div class="max-w-screen mx-auto px-4">
+                <div class="flex justify-between">
+                    <div class="flex space-x-7">
+                        <div>
+                            <!-- Website Logo -->
+                            <a href="#" class="flex items-center py-4 px-2">
+                                <img src="../images/phone-call-svgrepo-com (1).svg" alt="Logo" class="h-9 w-9 mr-3">
+                                <span class="font-semibold text-white text-4xl">KUstore</span>
+                            </a>
+                        </div>
+                        <!-- Primary Navbar items -->
+                        <div class="hidden md:flex items-center space-x-1">
+                            <a href="list-barang.php" class="py-4 px-2 text-white  font-semibold hover:text-fuchsia-500 transition duration-300 ">List-Barang</a>
+                            <a href="list-user.php" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">List-User</a>
+                            <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">About</a>
+                            <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">Contact Us</a>
+                        </div>
+                    </div>
+
+                    <?php
+
+
+                    if (isset($_SESSION["login"])) {
+                    ?>
+
+                        <!-- Secondary Navbar items -->
+                        <div class="hidden md:flex items-center space-x-3 ">
+                            <a href="logout.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log Out</a>
+                        </div>
+                    <?php
+                    } else {
+
+                    ?>
+                        <!-- Secondary Navbar items -->
+                        <div class="hidden md:flex items-center space-x-3 ">
+                            <a href="login.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log In</a>
+                            <a href="register.php" class="py-2 px-2 font-medium text-white bg-fuchsia-500 rounded hover:bg-fuchsia-400 transition duration-300">Sign Up</a>
+                        </div>
+                    <?php
+                    }
+
+
+
+                    ?>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                        <button class="outline-none mobile-menu-button">
+                            <svg class=" w-6 h-6 text-fuchsia-500 hover:text-fuchsia-400 " x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile menu -->
+            <div class="hidden mobile-menu">
+                <ul class="">
+                    <li class="active"><a href="list-barang.php" class="block text-sm px-2 py-4 text-white bg-fuchsia-500 font-semibold">List-Barang</a></li>
+                    <li><a href="list-user.php" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">List-User</a></li>
+                </ul>
+            </div>
+            <script>
+                const btn = document.querySelector("button.mobile-menu-button");
+                const menu = document.querySelector(".mobile-menu");
+
+                btn.addEventListener("click", () => {
+                    menu.classList.toggle("hidden");
+                });
+            </script>
+        </nav>
+    </header>
+    <!-- Header End -->
     <!-- Details Start -->
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="flex justify-center ">

@@ -11,8 +11,6 @@ if (!isset($_SESSION["login"])) {
 
 }
 
-
-
 ?>
 
 
@@ -331,14 +329,14 @@ if (!isset($_SESSION["login"])) {
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                 <div>
                     <h3 class="mb-6 text-sm font-semibold  uppercase text-white dark:text-white">Resources</h2>
-                    <ul class="text-white dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
-                        </li>
-                        <li>
-                            <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
-                        </li>
-                    </ul>
+                        <ul class="text-white dark:text-gray-400">
+                            <li class="mb-4">
+                                <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
+                            </li>
+                            <li>
+                                <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+                            </li>
+                        </ul>
                 </div>
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Follow us</h2>

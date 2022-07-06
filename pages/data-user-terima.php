@@ -1,25 +1,3 @@
-<?php
-
-
-
-
-session_start();
-
-if (!isset($_SESSION["login"])) {
-
-?>
-    <script>
-        window.location.href = "loginadmin.php";
-    </script>
-<?php
-
-}
-require 'koneksi.php';
-
-$list = mysqli_query($conn, "SELECT * FROM data_diri")
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +5,7 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KUstore - List Data User</title>
+    <title>KUstore - Diterima</title>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
@@ -114,161 +92,19 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
 
 
     <!-- Header Start -->
-    <header>
-        <nav class="bg-purple-800 shadow-lg">
-            <div class="max-w-screen mx-auto px-4">
-                <div class="flex justify-between">
-                    <div class="flex space-x-7">
-                        <div>
-                            <!-- Website Logo -->
-                            <a href="#" class="flex items-center py-4 px-2">
-                                <img src="../images/phone-call-svgrepo-com (1).svg" alt="Logo" class="h-9 w-9 mr-3">
-                                <span class="font-semibold text-white text-4xl">KUstore</span>
-                            </a>
-                        </div>
-                        <!-- Primary Navbar items -->
-                        <div class="hidden md:flex items-center space-x-1">
-                            <a href="list-barang.php" class="py-4 px-2 text-white  font-semibold hover:text-fuchsia-500 transition duration-300 ">List-Barang</a>
-                            <a href="list-user.php" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">List-User</a>
-                            <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">About</a>
-                            <a href="" class="py-4 px-2 text-white font-semibold hover:text-fuchsia-500 transition duration-300">Contact Us</a>
-                        </div>
-                    </div>
-
-                    <?php
-
-
-                    if (isset($_SESSION["login"])) {
-                    ?>
-
-                        <!-- Secondary Navbar items -->
-                        <div class="hidden md:flex items-center space-x-3 ">
-                            <a href="logout.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log Out</a>
-                        </div>
-                    <?php
-                    } else {
-
-                    ?>
-                        <!-- Secondary Navbar items -->
-                        <div class="hidden md:flex items-center space-x-3 ">
-                            <a href="login.php" class="py-2 px-2 font-medium text-white rounded hover:bg-fuchsia-500 hover:text-white transition duration-300">Log In</a>
-                            <a href="register.php" class="py-2 px-2 font-medium text-white bg-fuchsia-500 rounded hover:bg-fuchsia-400 transition duration-300">Sign Up</a>
-                        </div>
-                    <?php
-                    }
-
-
-
-                    ?>
-
-                    <!-- Mobile menu button -->
-                    <div class="md:hidden flex items-center">
-                        <button class="outline-none mobile-menu-button">
-                            <svg class=" w-6 h-6 text-fuchsia-500 hover:text-fuchsia-400 " x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- mobile menu -->
-            <div class="hidden mobile-menu">
-                <ul class="">
-                    <li class="active"><a href="list-barang.php" class="block text-sm px-2 py-4 text-white bg-fuchsia-500 font-semibold">List-Barang</a></li>
-                    <li><a href="list-user.php" class="block text-sm px-2 py-4 hover:bg-fuchsia-500 transition duration-300">List-User</a></li>
-                </ul>
-            </div>
-            <script>
-                const btn = document.querySelector("button.mobile-menu-button");
-                const menu = document.querySelector(".mobile-menu");
-
-                btn.addEventListener("click", () => {
-                    menu.classList.toggle("hidden");
-                });
-            </script>
-        </nav>
-    </header>
+    <?php
+    include 'header.php';
+    ?>
     <!-- Header End -->
 
 
-    <!-- Table End -->
-    <div class="flex flex-col mt-10 bg-transparent mx-3">
-        <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div class="inline-block min-w-full overflow-hidden align-middle border-b border-transparent shadow-2xl sm:rounded-lg">
-                <table class="min-w-full shadow-2xl">
-                    <thead>
-                        <tr>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Name</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Email</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                country</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Edit</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Delete</th>
-                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-transparent">
-                                Details
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="bg-transparent">
-                        <?php foreach ($list as $row) : ?>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
-                                        <div class="flex-shrink-0 w-10 h-10">
-                                            <img class="w-10 h-10 rounded-full" src="upload/<?= $row["img"]; ?>" alt="admin dashboard ui">
-                                        </div>
-
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium leading-5 text-white">
-                                                <?= $row["first_name"]; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-white"><?= $row["email"]; ?></div>
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-white"><?= $row["country"]; ?></div>
-                                </td>
-
-                                <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='datauserUpdate.php?id_data_diri=" . $row['id_data_diri'] . "'"; ?>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                        </svg>
-                                    </button>
-                                </td>
-
-                                <td class="px-6 py-4 text-sm leading-5 text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='delete.php?id_data_diri=" . $row['id_data_diri'] . "'"; ?>">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                        </svg>
-                                    </button>
-                                </td>
-
-                                <td class="px-6 py-4 text-sm leading-5  text-white whitespace-no-wrap border-b border-gray-200">
-                                    <button type="submit" onclick="<?php echo "location.href='detail.php?id_data_diri=" . $row['id_data_diri'] . "'"; ?>">
-                                        <img src="../images/search.png" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"></img>
-                                    </button>
-                                </td>
-
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+    <!-- DIterima Start -->
+    <div class="flex justify-center">
+        <div class="bg-transparent py-3 shadow-2xl shadow-fuchsia-500 overflow-hidden w-full max-w-screen-lg border-2  border-fuchsia-400 sm:rounded-lg mx-5 mt-10">
+            <h1 class="text-white font-bold text-3xl text-center">Data Telah Diterima</h1>
         </div>
     </div>
-    <!-- Table End -->
+    <!-- Diterima End -->
 
 
     <!-- Footer Start -->
@@ -312,23 +148,6 @@ $list = mysqli_query($conn, "SELECT * FROM data_diri")
                         </li>
                         <li>
                             <a href="#" class="hover:underline">Terms &amp; Conditions</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">CONTACT US</h2>
-                    <ul class="text-white dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="#" class="hover:underline">Jl surya utama, surakarta, Jawa Tengah, Indonesia</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="#" class="hover:underline">kustore@gmail.com</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">(+62) 83852973543</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">Surakarta, INDONESIA</a>
                         </li>
                     </ul>
                 </div>

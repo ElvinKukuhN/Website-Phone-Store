@@ -5,7 +5,7 @@ require 'koneksi.php';
 if (tambah($_POST) == 1) {
 ?>
     <script>
-        let url = "list-user.php";
+        let url = "data-user-terima.php";
         window.location.href = url;
     </script>
 <?php
