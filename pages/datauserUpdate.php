@@ -138,10 +138,10 @@ $d = mysqli_fetch_array($data);
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="country" class="block text-sm font-medium text-white">Country</label>
                                         <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-pink-300 sm:text-sm" value="<?php echo $d['country'] ?>">
-                                            <option>United States</option>
+                                            <option>Indonesia</option>
                                             <option>Canada</option>
                                             <option>Mexico</option>
-                                            <option>Indonesia</option>
+                                            <option>United States</option>
                                             <option>Malaysia</option>
                                         </select>
                                     </div>
@@ -184,7 +184,8 @@ $d = mysqli_fetch_array($data);
                                                 <div class="flex text-sm text-white">
                                                     <label for="file-upload" class="relative cursor-pointer px-2 border-2 border-pink-600 rounded-md font-medium text-white-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                                         <span>Upload a file</span>
-                                                        <input id="file-upload" name="file-upload" type="file" class="sr-only" value="<?php echo $d['img'] ?>">
+                                                        <input type="checkbox" name="ubah_poto" value="true">
+                                                        <input id="file-upload" name="file-upload" type="file" class="sr-only" value="upload/<?php echo $d['img'] ?>">
                                                     </label>
                                                     <p class="pl-1">or drag and drop</p>
                                                 </div>
@@ -199,7 +200,7 @@ $d = mysqli_fetch_array($data);
                                         <div class="mt-4 space-y-4">
                                             <div class="flex items-start">
                                                 <div class="flex items-center h-5">
-                                                    <input id="comments" name="comments" type="checkbox" value="<?php echo $d['notif_email'] ?>" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                    <input id="comments" name="comments" type="checkbox" value="Comments" <?php if ($d['notif_email'] == 'Comments') echo 'checked' ?> class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                                 </div>
                                                 <div class="ml-3 text-sm">
                                                     <label for="comments" class="font-medium text-slate-800">Comments</label>
@@ -213,15 +214,15 @@ $d = mysqli_fetch_array($data);
                                         <p class="text-sm text-white">These are delivered via SMS to your mobile phone.</p>
                                         <div class="mt-4 space-y-4">
                                             <div class="flex items-center">
-                                                <input id="push-everything" name="push-notifications" type="radio" value="<?php echo $d['push'] ?>" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <input id="push-everything" name="push-notifications" type="radio" value="Everything" <?php if ($d['push'] == 'Everything') echo 'checked' ?> class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                                 <label for="push-everything" class="ml-3 block text-sm font-medium text-slate-800"> Everything </label>
                                             </div>
                                             <div class="flex items-center">
-                                                <input id="push-email" name="push-notifications" type="radio" value="<?php echo $d['push'] ?>" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <input id="push-email" name="push-notifications" type="radio" value="Same As Email" <?php if ($d['push'] == 'Same As Email') echo 'checked' ?> class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                                 <label for="push-email" class="ml-3 block text-sm font-medium text-slate-800"> Same as email </label>
                                             </div>
                                             <div class="flex items-center">
-                                                <input id="push-nothing" name="push-notifications" type="radio" value="<?php echo $d['push'] ?>" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <input id="push-nothing" name="push-notifications" type="radio" value="No Push Notification" <?php if ($d['push'] == 'No Push Notification') echo 'checked' ?> class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                                 <label for="push-nothing" class="ml-3 block text-sm font-medium text-slate-800"> No push notifications </label>
                                             </div>
                                         </div>

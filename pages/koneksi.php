@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "kustore");
+$conn = mysqli_connect("localhost", "root", "", "aistore");
 
 if (mysqli_connect_errno()) {
     echo "Koneksi data gagal :" . mysqli_connect_error();
@@ -85,22 +85,24 @@ function update($data)
     $about = $data["about"];
     $notif = $data["comments"];
     $push = $data["push-notifications"];
-    $file_upload = $_FILES['file-upload']['name'];
-    $errorfiles = $_FILES['file-upload']['error'];
-    $tmpname = $_FILES['file-upload']['tmp_name'];
-    if ($errorfiles == 0) {
-        move_uploaded_file($tmpname, "upload/" . $file_upload);
-    }
 
-    $nama_file = "upload/e.txt";
+    if (isset($data["ubah_poto"])) {
+        $file_upload = $_FILES['file-upload']['name'];
+        $errorfiles = $_FILES['file-upload']['error'];
+        $tmpname = $_FILES['file-upload']['tmp_name'];
+        if ($errorfiles == 0) {
+            move_uploaded_file($tmpname, "upload/" . $file_upload);
+        }
 
-    $data = "$file_upload";
-    $file = fopen($nama_file, "w");
-    fwrite($file, $data);
-    fclose($file);
+        $nama_file = "upload/e.txt";
+
+        $data = "$file_upload";
+        $file = fopen($nama_file, "w");
+        fwrite($file, $data);
+        fclose($file);
 
 
-    $hasil =  "UPDATE data_diri SET
+        $hasil =  "UPDATE data_diri SET
         first_name ='$first_name',
         last_name = '$last_name',
         email = '$email',
@@ -114,8 +116,23 @@ function update($data)
         notif_email = '$notif',
         push = '$push'
         WHERE id_data_diri ='$id' ";
-    mysqli_query($conn, $hasil);
-
+        mysqli_query($conn, $hasil);
+    } else {
+        $hasil =  "UPDATE data_diri SET
+        first_name ='$first_name',
+        last_name = '$last_name',
+        email = '$email',
+        country = '$country',
+        address = '$address',
+        city = '$city',
+        province = '$province',
+        postal_code = '$postal_code',
+        about = '$about',
+        notif_email = '$notif',
+        push = '$push'
+        WHERE id_data_diri ='$id' ";
+        mysqli_query($conn, $hasil);
+    }
     return mysqli_affected_rows($conn);
 }
 
